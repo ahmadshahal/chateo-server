@@ -1,6 +1,7 @@
 package com.kotmaster
 
 import com.kotmaster.data.database.DatabaseFactory
+import com.kotmaster.di.controllersModule
 import com.kotmaster.di.dataSourcesModule
 import com.kotmaster.di.databaseModule
 import com.kotmaster.plugins.configureMonitoring
@@ -16,7 +17,7 @@ fun main(args: Array<String>): Unit =
 @Suppress("unused") // application.conf references the main function. This annotation prevents the IDE from marking it as unused.
 fun Application.module() {
     install(Koin) {
-        modules(dataSourcesModule, databaseModule)
+        modules(dataSourcesModule, databaseModule, controllersModule)
     }
     DatabaseFactory.init()
     configureSockets()

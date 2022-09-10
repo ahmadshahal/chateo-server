@@ -14,7 +14,6 @@ interface MessagesDao {
 class MessagesDaoImpl : MessagesDao {
 
     private fun resultRowToMessage(resultRow: ResultRow) = Message(
-        id = resultRow[Messages.id],
         senderUsername = resultRow[Messages.senderUsername],
         text = resultRow[Messages.senderUsername]
     )
@@ -25,7 +24,6 @@ class MessagesDaoImpl : MessagesDao {
 
     override suspend fun insertMessage(message: Message): Unit = dbQuery {
         Messages.insert {
-            it[id] = message.id
             it[senderUsername] = message.senderUsername
             it[text] = message.text
         }
