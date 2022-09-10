@@ -1,0 +1,1 @@
+rootProject.name = "com.kotmaster.chateo-server"
