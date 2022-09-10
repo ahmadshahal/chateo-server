@@ -7,6 +7,6 @@ import org.koin.dsl.module
 
 val dataSourcesModule = module {
     single {
-        MessagesDataSourceImpl()
+        MessagesDataSourceImpl(get())
     } bind MessagesDataSource::class
 }

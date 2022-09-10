@@ -1,20 +1,20 @@
 package com.kotmaster.data.sources
 
-import com.kotmaster.models.Message
+import com.kotmaster.data.database.MessagesDao
+import com.kotmaster.data.models.Message
 
 interface MessagesDataSource {
 
-    fun getMessages(): List<Message>
+    suspend fun getMessages(): List<Message>
 
-    fun insertMessage(message: Message)
+    suspend fun insertMessage(message: Message)
 }
 
-class MessagesDataSourceImpl : MessagesDataSource {
-    override fun getMessages(): List<Message> {
-        TODO("Not yet implemented")
-    }
+class MessagesDataSourceImpl(
+    private val messagesDao: MessagesDao
+) : MessagesDataSource {
 
-    override fun insertMessage(message: Message) {
-        TODO("Not yet implemented")
-    }
+    override suspend fun getMessages() = messagesDao.getMessages()
+
+    override suspend fun insertMessage(message: Message) = messagesDao.insertMessage(message)
 }

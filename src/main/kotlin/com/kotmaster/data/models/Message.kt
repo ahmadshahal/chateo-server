@@ -1,4 +1,4 @@
-package com.kotmaster.models
+package com.kotmaster.data.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
