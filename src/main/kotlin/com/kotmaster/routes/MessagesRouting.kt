@@ -1,14 +1,16 @@
 package com.kotmaster.routes
 
-import com.kotmaster.data.sources.MessagesDataSourceImpl
+import com.kotmaster.data.repositories.MessagesRepository
 import io.ktor.server.application.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import org.koin.ktor.ext.inject
 
 fun Route.messagesRouting() {
-    val messagesDataSource = MessagesDataSourceImpl()
+
+    val messagesRepository: MessagesRepository by inject()
 
     get("/messages") {
-        call.respond(messagesDataSource.getMessages())
+        call.respond(messagesRepository.getMessages())
     }
 }
